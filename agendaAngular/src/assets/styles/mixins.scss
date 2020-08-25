@@ -16,10 +16,10 @@ $sizes: 100;
 @mixin generate-padding {
     @for $i from 1 through $sizes {
         $padding: $i * 1px;
-        .ml-#{$i} {padding-left: $padding;}
-        .mr-#{$i} {padding-right: $padding;}
-        .mt-#{$i} {padding-top: $padding;}
-        .mb-#{$i} {padding-bottom: $padding;}
+        .pl-#{$i} {padding-left: $padding;}
+        .pr-#{$i} {padding-right: $padding;}
+        .pt-#{$i} {padding-top: $padding;}
+        .pb-#{$i} {padding-bottom: $padding;}
     }
 }
 @include generate-padding();

@@ -1,0 +1,48 @@
+/************************** COLORS **************************/
+$pale-grey: #f8f9fd;
+$sky-blue: #68a0fa;
+$pale-olive-green: #90d26c;
+$dark: #2a2d3b;
+$bluey-grey: #9198af;
+$cloudy-blue: #c0c3d2;
+$light-yellowish-green: #dbff90;
+$white-two: #ffffff;
+$pale-lilac: #e4e7f4;
+$white: #e1e1e1;
+$very-light-pink: #fff3f2;
+$pale-grey: #f8f9fd;
+$salmon: #fa7268;
+
+/************************** FONT-FAMILY **************************/
+$font-light: "Roboto-Light";
+$font-regular: "Roboto-Regular";
+$font-medium: "Roboto-Medium";
+$font-bold: "Roboto-Bold";
+
+@font-face {
+	font-family: "Roboto-Light";
+	src: url("/assets/fonts/Roboto-Light.ttf");
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("/assets/fonts/Roboto-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: "Roboto-Medium";
+	src: url("/assets/fonts/Roboto-Medium.ttf");
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Roboto-Bold";
+	src: url("/assets/fonts/Roboto-Bold.ttf");
+	font-weight: 700;
+	font-style: normal;
+}

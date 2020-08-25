@@ -1,1 +1,63 @@
-@import 'mixins';
+@import "variables";
+
+.c-nav{
+    display: flex;
+    padding: 16px 16px 16px 0;
+
+    .logo{
+        cursor: pointer;
+    }
+    
+    .btn-new-contact{
+        border-radius: 20px;
+        padding: 7px;
+        width: 195px;
+        display: inline-flex;
+        align-items: flex-end;
+        justify-content: center;
+        background: $light-yellowish-green;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+        border: solid 1px rgba(255, 255, 255, 0.16);
+        font-family: $font-medium;
+        color: $salmon;
+        font-size: 14px;
+
+        i{
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+    }
+
+    // caixa de pesquisa
+    .c-input{
+        display: flex;
+        background: $pale-lilac;
+        border-radius: 4px;
+        align-items: center;
+        height: 32px;
+        width: 100%;
+
+        input{
+            background: $pale-lilac;
+            border: 0;
+            flex: 1;
+            border-radius: 4px;
+            padding: 7px 8px;
+            height: 32px;
+            font-family: $font-regular;
+            color: $bluey-grey;
+            font-size: 16px;
+
+            &::placeholder{
+                font-family: $font-regular;
+                color: $bluey-grey;
+                font-size: 16px;
+            }
+        }
+
+        img{
+            padding: 7px 8px;
+        }
+    }
+}
