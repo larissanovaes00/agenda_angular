@@ -1,0 +1,25 @@
+// generate margins and padding classes
+
+$sizes: 100;
+
+@mixin generate-margin {
+    @for $i from 1 through $sizes {
+        $margin: $i * 1px;
+        .ml-#{$i} {margin-left: $margin;}
+        .mr-#{$i} {margin-right: $margin;}
+        .mt-#{$i} {margin-top: $margin;}
+        .mb-#{$i} {margin-bottom: $margin;}
+    }
+}
+@include generate-margin();
+
+@mixin generate-padding {
+    @for $i from 1 through $sizes {
+        $padding: $i * 1px;
+        .ml-#{$i} {padding-left: $padding;}
+        .mr-#{$i} {padding-right: $padding;}
+        .mt-#{$i} {padding-top: $padding;}
+        .mb-#{$i} {padding-bottom: $padding;}
+    }
+}
+@include generate-padding();

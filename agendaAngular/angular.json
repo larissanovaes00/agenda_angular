@@ -22,6 +22,11 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles"
+              ]
+            },
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -68,6 +73,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "agendaAngular:build"
+          },
+          "stylePreprocessorOptions": {
+            "includePaths": [
+              "src/assets/styles"
+            ]
           },
           "configurations": {
             "production": {
