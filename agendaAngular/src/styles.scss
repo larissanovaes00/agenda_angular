@@ -2,3 +2,96 @@
 @import 'generics.scss';
 @import 'mixins';
 @import 'variables';
+
+body{
+    background: $pale-grey;
+}
+
+/* Modal */
+.modal-content{
+    border: none;
+    border-radius: 16px;
+    max-width: 432px;
+    margin: 0 auto;
+    box-shadow: 0 16px 10px 0 rgba(0, 0, 0, 0.16);
+}
+
+.modal-header{
+    padding: 16px 16px 12px;
+    font-family: $font-regular;
+    font-size: 16px;
+    color: $dark;
+    border-bottom: solid 2px $cloudy-blue;
+}
+
+.modal-body{
+    font-family: $font-regular;
+    font-size: 14px;
+    color: $dark;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+
+    .c-input-field{
+        width: 100%;
+        display: grid;
+        margin-bottom: 16px;
+
+        label{
+            margin-bottom: 4px;
+        }
+
+        input{
+            border: solid 1px $cloudy-blue;
+            border-radius: 4px;
+            font-family: $font-regular;
+            font-size: 14px;
+            color: $dark;
+            padding: 8px 10px;
+
+            &::placeholder{
+                font-family: $font-regular;
+                font-size: 14px;
+                color: $dark;
+            }
+        }
+    }
+
+    .bottom-section{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 14px;
+        border-top: solid 1px $cloudy-blue; 
+
+        a{
+            color: $salmon;
+            font-family: $font-medium;
+            font-size: 14px;
+            margin-right: 16px;
+            transition: 0.4s;
+
+            &:hover{
+                color: $salmon-light;
+            }
+        }
+
+        button{
+            border-radius: 16px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+            border: solid 1px rgba(255, 255, 255, 0.16);
+            background-color: $salmon;
+            color: $white-two;
+            font-family: $font-medium;
+            font-size: 14px;
+            padding: 8px 16px;
+            transition: 0.4s;
+
+            &:hover{
+                background: $salmon-light;
+                box-shadow: none;
+            }
+        }
+    }
+}

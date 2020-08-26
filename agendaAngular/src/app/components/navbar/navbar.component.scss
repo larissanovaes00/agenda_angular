@@ -25,7 +25,7 @@
         transition: 0.4s;
 
         &:hover{
-            background: $pale-grey;
+            box-shadow: none;
         }
 
         i{
@@ -67,3 +67,5 @@
         }
     }
 }
+
+
