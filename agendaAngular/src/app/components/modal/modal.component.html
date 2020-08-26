@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left" *ngIf="type === 'criar'">Criar novo contato</h4>    
+    <h4 class="modal-title pull-left" *ngIf="type === 'editar'">Editar contato</h4>    
+</div>
+<div class="modal-body">
+    <div class="w-100 pl-24 pr-24 mb-22">
+        <div class="c-input-field mt-20">
+            <form [formGroup]="sendForm">
+                <div class="c-input-field">
+                    <label>Nome</label>
+                    <input type="text"  formControlName="contact"/>
+                </div>
+                <div class="c-input-field">
+                    <label>E-mail</label>
+                    <input type="text" formControlName="email"/>
+                </div>
+                <div class="c-input-field mb-22">
+                    <label>Telefone</label>
+                    <input type="text"  formControlName="telephone"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <div class="pt-16 pb-16 pr-16">
+            <a href="#" (click)="close()">cancelar</a>
+            <button (click)="onSubmit()">salvar</button>
+            <p *ngIf="save">Contato Salvo</p>
+            <!-- <p>Contato Salvo</p> -->
+        </div>
+    </div>
+</div>

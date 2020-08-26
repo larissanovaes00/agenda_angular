@@ -10,15 +10,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let contact of contacts">
                 <td class="td-letter">
                     <span class="contact-letter">L</span>
                 </td>
-                <td class="td-name">Larissa Novaes</td>
-                <td class="td-email">larissanovaes00@hotmail.com</td>
-                <td class="td-phone">961546854</td>
+                <td class="td-name">{{ contact.contact }}</td>
+                <td class="td-email">{{ contact.email }} </td>
+                <td class="td-phone">{{ contact.telephone }}</td>
                 <td class="td-actions">
-                    <a href="#" class="mr-24 icon-edit">
+                    <a href="#" class="mr-24 icon-edit" (click)="editContact(contact.id, 'editar')">
                         <i><img src="../../../assets/img/icon-edit.svg" alt="editar"></i>
                     </a>
                     <a href="#" class="icon-edit">
@@ -26,38 +26,7 @@
                     </a>
                 </td>
             </tr>
-            <tr>
-                <td class="td-letter">
-                    <span class="contact-letter">L</span>
-                </td>
-                <td class="td-name">Jacob</td>
-                <td class="td-email">larissanovaes00@hotmail.com</td>
-                <td class="td-phone">12345685</td>
-                <td class="td-actions">
-                    <a href="#" class="mr-24 icon-edit">
-                        <i><img src="../../../assets/img/icon-edit.svg" alt="editar"></i>
-                    </a>
-                    <a href="#" class="icon-edit">
-                        <i><img src="../../../assets/img/icon-delete.svg" alt="excluir"></i>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td class="td-letter">
-                    <span class="contact-letter">L</span>
-                </td>
-                <td class="td-name">Larry the Bird</td>
-                <td class="td-email">larissanovaes00@hotmail.com</td>
-                <td class="td-phone">96547885</td>
-                <td class="td-actions">
-                    <a href="#" class="mr-24 icon-edit">
-                        <i><img src="../../../assets/img/icon-edit.svg" alt="editar"></i>
-                    </a>
-                    <a href="#" class="icon-edit">
-                        <i><img src="../../../assets/img/icon-delete.svg" alt="excluir"></i>
-                    </a>
-                </td>
-            </tr>
+            
         </tbody>
     </table>
 </div>

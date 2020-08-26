@@ -1,6 +1,6 @@
 <nav class="c-nav">
     <img class="logo mr-60" src="../../../assets/img/logo.svg" alt="logo">
-    <button class="btn-new-contact mr-24" (click)="openModal(template)">
+    <button class="btn-new-contact mr-24" (click)="openModal('criar')">
         <i><img src="../../../assets/img/icon-plus.svg" alt=""></i>
         <span>Criar contato</span>
     </button>
@@ -9,43 +9,3 @@
         <i class="search-icon"><img src="../../../assets/img/icon-search.svg" alt=""></i>
     </div>
 </nav>
-
-<!-- modal novo contato -->
-<ng-template #template>
-    <div>
-        <div class="modal-header">
-            <h4 class="modal-title pull-left">Editar Contato</h4>
-            <button
-            type="button"
-            class="close pull-right"
-            aria-label="Close"
-            (click)="modalRef.hide()"
-            >
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="w-100 pl-24 pr-24 mb-22">
-                <div class="c-input-field mt-20">
-                    <label>Nome</label>
-                    <input type="text" />
-                </div>
-                <div class="c-input-field">
-                    <label>E-mail</label>
-                    <input type="text" />
-                </div>
-                <div class="c-input-field mb-22">
-                    <label>Telefone</label>
-                    <input type="text" />
-                </div>
-            </div>
-
-            <div class="bottom-section">
-                <div class="pt-16 pb-16 pr-16">
-                    <a href="#">cancelar</a>
-                    <button>salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>

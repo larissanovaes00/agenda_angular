@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +14,12 @@ export class NavbarComponent implements OnInit {
   constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
+    
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(
-      template,
-      Object.assign({}, { class: 'c-modal' })
-    );
+  openModal(type: string){
+    this.modalRef = this.modalService.show(ModalComponent);
+    this.modalRef.content.type = type;
   }
 
 }
