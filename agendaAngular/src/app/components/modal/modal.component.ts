@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-import { finalize, timeInterval, delay } from 'rxjs/operators';
-import { timer } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-modal',
@@ -12,10 +11,13 @@ import { timer } from 'rxjs';
 })
 export class ModalComponent implements OnInit {
 
+  @Output()  atualiza = new EventEmitter<boolean>();
+  
   modalRef: BsModalRef;
   type: string;
   sendForm: FormGroup;
   save = false;
+  deleted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,10 +25,10 @@ export class ModalComponent implements OnInit {
     private modalService: BsModalRef
     ) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.sendForm = this.formBuilder.group({
       contact: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
       telephone: ['', Validators.required],
     });
   }
@@ -40,6 +42,7 @@ export class ModalComponent implements OnInit {
         finalize(() => {
           this.save = true;
           this.close();
+          this.refresh();
         })
       )
       .subscribe()
@@ -49,9 +52,28 @@ export class ModalComponent implements OnInit {
       console.log('Vai Editar')
     }
   }
+
   close = () => {
     setTimeout(() => {
       this.modalService.hide();
     }, 1000)
   }
+
+  delete(){
+    this.atualiza.emit(true);
+  }
+
+  onDelete(id){
+    this.apiService.delete(id);
+    this.deleted = true;
+    this.close();
+    this.apiService.getAll();
+  }
+
+  refresh(): void {
+    setTimeout(() =>{
+      window.location.reload();
+    }, 1000)
+  }
+
 }

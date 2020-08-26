@@ -50,12 +50,13 @@ private url = "http://localhost:3000";
   //     )
   // }
 
-  // delete(id) {
-  //   return this.httpClient.delete<Contact>(this.url + '/contact/' + id, this.httpOptions)
-  //     .pipe(
-  //       catchError(this.errorHandler)
-  //     )
-  // }
+  delete(id) {
+  return this.httpClient.delete<Contact>(this.url + '/contacts/' + id, this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  
 
   errorHandler(error) {
     let errorMessage = '';

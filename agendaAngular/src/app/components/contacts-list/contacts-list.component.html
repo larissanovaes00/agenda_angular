@@ -1,3 +1,9 @@
+<!-- <div *ngIf="deleted" class="">
+    <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
+</div> -->
+
 <div class="c-table">
     <table class="table table-hover" >
         <thead>
@@ -21,12 +27,13 @@
                     <a href="#" class="mr-24 icon-edit" (click)="editContact(contact.id, 'editar')">
                         <i><img src="../../../assets/img/icon-edit.svg" alt="editar"></i>
                     </a>
-                    <a href="#" class="icon-edit">
+                    <a href="#" class="icon-delete" (click)="delete(contact.id, 'deletar')">
                         <i><img src="../../../assets/img/icon-delete.svg" alt="excluir"></i>
                     </a>
                 </td>
             </tr>
-            
         </tbody>
     </table>
 </div>
+
+

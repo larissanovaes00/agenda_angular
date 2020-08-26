@@ -22,6 +22,10 @@ body{
     font-size: 16px;
     color: $dark;
     border-bottom: solid 2px $cloudy-blue;
+
+    .modal-title{
+        line-height: normal;
+    }
 }
 
 .modal-body{
@@ -60,10 +64,11 @@ body{
     .bottom-section{
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
         justify-content: flex-end;
         align-items: center;
         font-size: 14px;
-        border-top: solid 1px $cloudy-blue; 
+        border-top: solid 2px $cloudy-blue; 
 
         a{
             color: $salmon;
@@ -93,5 +98,28 @@ body{
                 box-shadow: none;
             }
         }
+
+        .c-success-message{
+            width: 100%;
+            p{
+                color: $salmon;
+                font-family: $font-medium;
+                padding: 16px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+// altert-sucess
+.c-alert{
+    .alert{
+        color: $salmon;
+        background: none;
+        border: none;
+        padding: 16px 0;
+        font-size: 16px;
+        font-family: $font-medium;
+        transition: 0.4s;
     }
 }
