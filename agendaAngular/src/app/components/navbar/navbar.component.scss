@@ -3,6 +3,7 @@
 .c-nav{
     display: flex;
     padding: 16px 16px 16px 0;
+    margin-bottom: 16px;
 
     .logo{
         cursor: pointer;
@@ -21,6 +22,11 @@
         font-family: $font-medium;
         color: $salmon;
         font-size: 14px;
+        transition: 0.4s;
+
+        &:hover{
+            background: $pale-grey;
+        }
 
         i{
             width: 16px;
