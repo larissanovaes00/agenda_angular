@@ -12,10 +12,12 @@ import { ContacAlltService } from 'src/app/services/contactsAll.service';
   styleUrls: ['./contacts-list.component.scss']
 })
 export class ContactsListComponent implements OnInit {
-
+  
   modalRef: BsModalRef;
-  contacts: Contact[];
+  contacts: Contact[] = [];
   deleted = false;
+
+  colors = ['#68a0fa', '#90d26c', '#2a2d3b', '#9198af','#c0c3d2', '#dbff90', '#e4e7f4', '#fa7268', '#FF948C']
 
   constructor(
     private crudService: CrudService,
@@ -24,19 +26,25 @@ export class ContactsListComponent implements OnInit {
     private contactService: ContactService
   ) { }
 
+ 
   ngOnInit(): void {
     this.getAll();
-    
     this.allContacts.data.subscribe(contact => {
       this.contacts = contact;
     })
-
     this.contactService.action.subscribe(contact => {
       if(contact.created || contact.edited || contact.deleted){
         this.getAll();
       }
-    })
+      if(contact.created){
+      }
+    })  
   }
+  
+  getColorRandom(){
+    const random = Math.floor(Math.random() * this.colors.length);
+    return this.colors[random];
+  }  
 
   editContact(contact: Contact, type: string) {
     const contactEdited = {...contact, edited: true };
@@ -54,6 +62,7 @@ export class ContactsListComponent implements OnInit {
   getAll = () => {
     this.crudService.getAll().subscribe(res => {
       this.allContacts.changeAllContacts(res)
+      
     })
   }
 }

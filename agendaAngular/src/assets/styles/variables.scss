@@ -47,3 +47,31 @@ $font-bold: "Roboto-Bold";
 	font-weight: 700;
 	font-style: normal;
 }
+
+/************************** BTN CALL TO ACTION **************************/
+.btn-new-contact{
+	border-radius: 20px;
+	padding: 7px;
+	width: 170px;
+	height: 32px;
+	display: inline-flex;
+	align-items: flex-end;
+	justify-content: center;
+	background: $light-yellowish-green;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+	border: solid 1px rgba(255, 255, 255, 0.16);
+	font-family: $font-medium;
+	color: $salmon;
+	font-size: 14px;
+	transition: 0.4s;
+
+	&:hover{
+		box-shadow: none;
+	}
+
+	i{
+		width: 16px;
+		height: 16px;
+		margin-right: 8px;
+	}
+}

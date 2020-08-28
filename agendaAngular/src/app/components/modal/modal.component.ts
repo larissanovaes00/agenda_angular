@@ -51,13 +51,16 @@ export class ModalComponent implements OnInit {
       telephone: new FormControl(null, [Validators.required]),
     });
 
+    this.sendForm.get('contact').valueChanges.subscribe(val => {
+      if(this.type === 'criar'){
+      this.buttonSubmit = false
+      } 
+    });
+
     this.sendForm.get('email').valueChanges.subscribe(val => {
       if(this.type === 'criar'){
-
       this.buttonSubmit = false
-      } else {
-
-      }
+      } 
     });
     this.sendForm.get('telephone').valueChanges.subscribe(val => {
       if(this.type === 'criar'){

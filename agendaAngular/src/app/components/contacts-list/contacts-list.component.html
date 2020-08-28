@@ -1,10 +1,4 @@
-<!-- <div *ngIf="deleted" class="">
-    <div *ngFor="let alert of alerts">
-        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
-    </div>
-</div> -->
-
-<div class="c-table">
+<div class="c-table" *ngIf="contacts[0]?.contact; else noResult">
     <table class="table table-hover" >
         <thead>
             <tr>
@@ -15,10 +9,12 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let contact of contacts">
-                <td class="td-letter">
-                    <span class="contact-letter">L</span>
+        <tbody #lastContact>
+            <tr *ngFor="let contact of contacts let last = last; let i = index" [class.last-contact]="last">
+                <td class="td-letter" >
+                    <div class="contact-letter" [ngStyle]="{background: contact && getColorRandom()}">
+                        <span>{{ contact.contact | slice:0:1 }}</span>
+                    </div>
                 </td>
                 <td class="td-name">{{ contact.contact }}</td>
                 <td class="td-email">{{ contact.email }} </td>
@@ -35,3 +31,15 @@
         </tbody>
     </table>
 </div>
+<ng-template #noResult>
+    <div *ngIf="!contacts[0]?.contact">
+       <div class="c-empty-agenda">
+           <img src="../../../assets/img/icon-empty-agenda.svg" alt="">
+           <p>Nenhum contato foi criado ainda</p>
+           <button class="btn-new-contact mt-24" (click)="openModal('criar')">
+            <i><img src="../../../assets/img/icon-plus.svg" alt=""></i>
+            <span>Criar contato</span>
+        </button>
+       </div>
+    </div>
+</ng-template>
