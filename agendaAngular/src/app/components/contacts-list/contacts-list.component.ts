@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { CrudService } from 'src/app/services/crud.service';
 import { Contact } from '../../models/contact.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../modal/modal.component';
-import { finalize } from 'rxjs/operators';
-import { AlertComponent } from 'ngx-bootstrap/alert';
+import { ContactService } from 'src/app/services/contact.service';
+import { ContacAlltService } from 'src/app/services/contactsAll.service';
 
 @Component({
   selector: 'app-contacts-list',
@@ -17,55 +17,43 @@ export class ContactsListComponent implements OnInit {
   contacts: Contact[];
   deleted = false;
 
-  alerts: any[] = [{
-    type: 'success',
-    msg:  'Contato excluído com sucesso!',
-    timeout: 2000
-  }];
- 
-  addAlert(): void {
-    this.alerts.push({
-      type: 'info',
-      msg: 'Contato excluído com sucesso!',
-      timeout: 2000
-    });
-  }
- 
-  onClosed(dismissedAlert: AlertComponent): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
-  }
-
   constructor(
-    private service: ApiService,
-    private modalService: BsModalService
-    ) { }
+    private crudService: CrudService,
+    private modalService: BsModalService,
+    private allContacts: ContacAlltService,
+    private contactService: ContactService
+  ) { }
 
   ngOnInit(): void {
-    this.deleted = false;
-    this.getAll()
-  }
+    this.getAll();
+    
+    this.allContacts.data.subscribe(contact => {
+      this.contacts = contact;
+    })
 
-  editContact(id: number, type: string){
-    this.modalRef = this.modalService.show(ModalComponent);
-    this.modalRef.content.type = type;
-    this.modalRef.content.id = id;
-  }
-
-  delete(id: number, type){
-    this.modalRef = this.modalService.show(ModalComponent);
-    this.modalRef.content.type = type;
-    this.modalRef.content.id = id;
-  }
-
-  getAll = () => {
-    this.service.getAll().subscribe(contact => {
-      this.contacts = contact
+    this.contactService.action.subscribe(contact => {
+      if(contact.created || contact.edited || contact.deleted){
+        this.getAll();
+      }
     })
   }
 
-  refresh(): void {
-    setTimeout(() =>{
-      window.location.reload();
-    }, 1000)
+  editContact(contact: Contact, type: string) {
+    const contactEdited = {...contact, edited: true };
+    this.modalRef = this.modalService.show(ModalComponent);
+    this.modalRef.content.type = type;
+    this.contactService.changeContact(contactEdited)
+  }
+
+  delete(contact: Contact, type: string) {
+    this.modalRef = this.modalService.show(ModalComponent);
+    this.modalRef.content.type = type;
+    this.contactService.changeContact(contact)    
+  }
+
+  getAll = () => {
+    this.crudService.getAll().subscribe(res => {
+      this.allContacts.changeAllContacts(res)
+    })
   }
 }

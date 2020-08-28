@@ -5,7 +5,9 @@
         <span>Criar contato</span>
     </button>
     <div class="c-input">
-        <input class="search-box" type="search" name="search" placeholder="Buscar...">
-        <i class="search-icon"><img src="../../../assets/img/icon-search.svg" alt=""></i>
+        <form [formGroup]="searchForms">
+            <input class="search-box" type="search" name="search" placeholder="Buscar..." formControlName="query">
+            <i class="search-icon"><img src="../../../assets/img/icon-search.svg" alt=""></i>
+        </form>
     </div>
 </nav>

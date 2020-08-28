@@ -12,16 +12,49 @@
       <div class="c-input-field mt-20">
         <form [formGroup]="sendForm">
           <div class="c-input-field">
-            <label>Nome</label>
+            <label for="name">Nome</label>
             <input type="text" formControlName="contact" />
+            <div
+              *ngIf="
+                type !== 'editar' &&
+                sendForm.controls.contact.touched &&
+                sendForm.controls.contact.invalid &&
+                sendForm.controls.contact.errors?.required
+              "
+              class="c-success-message"
+            >
+              <p class="error-message">* Por favor inclua o nome do contato</p>
+            </div>
           </div>
           <div class="c-input-field">
-            <label>E-mail</label>
-            <input type="text" formControlName="email"/>
+            <label for="email">E-mail</label>
+            <input type="email" email formControlName="email" />
+            <div
+              *ngIf="
+                type !== 'editar' &&
+                sendForm.controls.email.touched &&
+                sendForm.controls.email.invalid &&
+                sendForm.controls.email.errors?.required
+              "
+              class="c-success-message"
+            >
+              <p class="error-message">* Por favor inclua o email</p>
+            </div>
           </div>
-          <div class="c-input-field mb-22">
-            <label>Telefone</label>
-            <input type="text" formControlName="telephone" />
+          <div class="c-input-field mb-22 col-6 p-0">
+            <label for="tel">Telefone</label>
+            <input type="tel" formControlName="telephone"/>
+            <div
+              *ngIf="
+                type !== 'editar' &&
+                sendForm.controls.telephone.touched &&
+                sendForm.controls.telephone.invalid &&
+                sendForm.controls.telephone.errors?.required
+              "
+              class="c-success-message"
+            >
+              <p class="error-message">* Por favor inclua o telefone</p>
+            </div>
           </div>
         </form>
       </div>
@@ -29,33 +62,36 @@
     <div class="bottom-section">
       <div class="pt-16 pb-16 pr-16">
         <a href="#" (click)="close()">cancelar</a>
-        <button (click)="onSubmit()">salvar</button>
+        <button type="submit" [disabled]="buttonSubmit" (click)="onSubmit()">
+          salvar
+        </button>
       </div>
       <div *ngIf="save" class="c-success-message">
         <p class="success-message">Contato salvo com sucesso!</p>
+      </div>
+      <div *ngIf="!sendForm.valid" class="c-success-message">
+        <p class="error-message">
+          * Por favor preencha todos os campos antes de enviar
+        </p>
       </div>
     </div>
   </div>
 </div>
 
-
 <div *ngIf="type === 'deletar'">
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">Excluir contato</h4>
-        
-        <!-- <button>User {{ id }}</button> -->
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Excluir contato</h4>
+  </div>
+  <div class="modal-body">
+    <p class="pt-20 pb-57 pl-24">Deseja realmente excluir o contato?</p>
+    <div class="bottom-section">
+      <div class="pt-16 pb-16 pr-16">
+        <a href="#" (click)="close()">cancelar</a>
+        <button (click)="onDelete()">Excluir</button>
+      </div>
+      <div *ngIf="deleted" class="c-success-message">
+        <p class="success-message">Contato excluido com sucesso!</p>
+      </div>
     </div>
-
-    <div class="modal-body">
-        <p class="pt-20 pb-57 pl-24">Deseja realmente excluir o contato?</p>
-        <div class="bottom-section">
-            <div class="pt-16 pb-16 pr-16">
-                <a href="#" (click)="close()">cancelar</a>
-                <button>Excluir</button>
-            </div>
-            <div *ngIf="deleted" class="c-success-message">
-                <p class="success-message">Contato excluido com sucesso!</p>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

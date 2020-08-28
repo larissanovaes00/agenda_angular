@@ -24,10 +24,10 @@
                 <td class="td-email">{{ contact.email }} </td>
                 <td class="td-phone">{{ contact.telephone }}</td>
                 <td class="td-actions">
-                    <a href="#" class="mr-24 icon-edit" (click)="editContact(contact.id, 'editar')">
+                    <a href="#" class="mr-24 icon-edit" (click)="editContact(contact, 'editar')">
                         <i><img src="../../../assets/img/icon-edit.svg" alt="editar"></i>
                     </a>
-                    <a href="#" class="icon-delete" (click)="delete(contact.id, 'deletar')">
+                    <a href="#" class="icon-delete" (click)="delete(contact, 'deletar')">
                         <i><img src="../../../assets/img/icon-delete.svg" alt="excluir"></i>
                     </a>
                 </td>
@@ -35,5 +35,3 @@
         </tbody>
     </table>
 </div>
-
-

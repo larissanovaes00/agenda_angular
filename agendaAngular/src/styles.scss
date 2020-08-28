@@ -21,7 +21,7 @@ body{
     font-family: $font-regular;
     font-size: 16px;
     color: $dark;
-    border-bottom: solid 2px $cloudy-blue;
+    border-bottom: solid 1px $cloudy-blue;
 
     .modal-title{
         line-height: normal;
@@ -52,12 +52,24 @@ body{
             font-size: 14px;
             color: $dark;
             padding: 8px 10px;
+            transition: 0.4s;
 
             &::placeholder{
                 font-family: $font-regular;
                 font-size: 14px;
                 color: $dark;
             }
+        }
+
+        .ng-invalid.ng-touched:not(form){
+            border: solid 1px $salmon;
+        }
+        
+        .error-message{
+            font-size: 12px;
+            margin-top: 5px;
+            color: $salmon;
+            font-family: $font-regular;
         }
     }
 
@@ -68,7 +80,7 @@ body{
         justify-content: flex-end;
         align-items: center;
         font-size: 14px;
-        border-top: solid 2px $cloudy-blue; 
+        border-top: solid 1px $cloudy-blue; 
 
         a{
             color: $salmon;
@@ -99,15 +111,25 @@ body{
             }
         }
 
+        button[disabled=disabled], button:disabled {
+            background: $salmon-light;
+            box-shadow: none;
+            opacity: 0.32;
+        }
+
         .c-success-message{
             width: 100%;
             p{
                 color: $salmon;
-                font-family: $font-medium;
+                font-family: $font-regular;
                 padding: 16px;
+                font-size: 12px;
                 text-align: center;
+                margin-top: 0px;
             }
         }
+
+        
     }
 }
 
