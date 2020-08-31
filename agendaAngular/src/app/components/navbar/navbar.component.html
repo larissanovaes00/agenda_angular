@@ -3,7 +3,7 @@
         <img class="logo mr-60" src="../../../assets/img/logo.svg" alt="logo">
     </div>
     <div class="d-flex w-100">
-        <button class="btn-new-contact mr-24" (click)="openModal('criar')">
+        <button class="btn-new-contact mr-24" (click)="openModal('criar')" *ngIf="contacts.length !== 0">
             <i><img src="../../../assets/img/icon-plus.svg" alt=""></i>
             <span>Criar contato</span>
         </button>

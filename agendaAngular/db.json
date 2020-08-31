@@ -1,40 +1,10 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "contact": "Larissa",
-      "email": "larissanovaes00@hotmail.com",
-      "telephone": "961546854"
-    },
-    {
-      "id": 2,
-      "contact": "Joana",
-      "email": "larissanovaes00@hotmail.com",
-      "telephone": "961546854"
-    },
-    {
-      "contact": "Wilson",
-      "email": "wilson@teste.com",
-      "telephone": "151516",
-      "id": 3
-    },
-    {
-      "contact": "Teste 3",
+      "contact": "Teste",
       "email": "teste@teste.com",
-      "telephone": "65165",
-      "id": 4
-    },
-    {
-      "contact": "Wilson",
-      "email": "teste@teste.cm",
-      "telephone": "999999",
-      "id": 5
-    },
-    {
-      "contact": "Ze povinho",
-      "email": "denilson@zepovinho.com",
-      "telephone": "888888",
-      "id": 6
+      "telephone": "1515156",
+      "id": 1
     }
   ]
 }

@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../modal/modal.component';
 import { ContactService } from 'src/app/services/contact.service';
 import { ContacAlltService } from 'src/app/services/contactsAll.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contacts-list',
@@ -23,7 +24,7 @@ export class ContactsListComponent implements OnInit {
     private crudService: CrudService,
     private modalService: BsModalService,
     private allContacts: ContacAlltService,
-    private contactService: ContactService
+    private contactService: ContactService,
   ) { }
 
  
@@ -42,9 +43,18 @@ export class ContactsListComponent implements OnInit {
   }
   
   getColorRandom(){
+
     const random = Math.floor(Math.random() * this.colors.length);
-    return this.colors[random];
-  }  
+    setTimeout(() => {
+      if(this.contacts.length > 0)
+      return this.colors[random];
+    },1000)
+  };
+
+  openModal(type: string){
+    this.modalRef = this.modalService.show(ModalComponent);
+    this.modalRef.content.type = type;
+  };
 
   editContact(contact: Contact, type: string) {
     const contactEdited = {...contact, edited: true };
@@ -60,7 +70,8 @@ export class ContactsListComponent implements OnInit {
   }
 
   getAll = () => {
-    this.crudService.getAll().subscribe(res => {
+    this.crudService.getAll()
+    .subscribe(res => {
       this.allContacts.changeAllContacts(res)
       
     })

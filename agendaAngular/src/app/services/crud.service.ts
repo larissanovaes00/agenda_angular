@@ -19,7 +19,7 @@ export class CrudService {
     })
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor( private httpClient: HttpClient ) { }
 
   getAll(): Observable<Contact[]> {
     return this.httpClient.get<Contact[]>(this.url + '/contacts/')

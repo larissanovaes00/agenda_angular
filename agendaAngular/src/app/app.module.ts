@@ -11,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ModalComponent } from './components/modal/modal.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxSpinnerModule,
     ModalModule.forRoot(),
     AlertModule.forRoot(),
     HttpClientModule,
